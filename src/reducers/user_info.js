@@ -7,7 +7,10 @@ export function user_info(state=initial_state,action) {
 	switch (action.type) {
 		case 'ADD_ATTENDEE':
 			var places_attending_copy = state.places_attending.slice(0)
-			places_attending_copy.push(action.result)
+			places_attending_copy.push({
+				business: action.result.business,
+				id: action.id
+			})
 			return Object.assign({},state,{
 				places_attending: places_attending_copy
 			})

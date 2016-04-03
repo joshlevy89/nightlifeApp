@@ -20,17 +20,17 @@ class PlacesAttendingScreen extends Component {
     }
     return (
       <div>
+      {user_name === undefined ? 
+      <div><Link to='/signin'>Sign in</Link></div>:null}
+      <div><Link to='/search'>Search for bars</Link></div>
       {places_attending.length !== 0 ?
        places_attending.map(place=>{
         return (
-        <div key={place.name}>
+        <div key={place.business.name}>
         <PlaceAttending {...this.props} place={place}/>
         </div>
         )
       }):<div>{message}</div>}
-      {user_name === undefined ? 
-      <div><Link to='/signin'>Sign in</Link></div>:null}
-      <div><Link to='/search'>Search for bars</Link></div>
       </div>
     );
   }

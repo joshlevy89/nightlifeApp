@@ -4,16 +4,20 @@ function signin(db,io) {
 		var user = req.body.user_name
 		var places_attending = db.collection('places_attending')
 		places_attending.find({}).toArray(function(err,docs){
-			var places_user_attending = docs.filter(doc => {
+			// get places user has marked as going
+			var places_user_marked = docs.filter(doc => {
 				if (doc.attending.indexOf(user) !== -1) {
-					return {
-						id: doc.id,
-						name: doc.name,
-						city: doc.city,
-						num_attending: doc.attending.length
-					}
+					return true 
 				}
 			})
+			// get the relevant fields for those documents
+			var places_user_attending = places_user_marked.map(place => {
+					return {
+						id: place.business.id,
+						business: place.business
+					}
+				}
+			)
 			res.json({
 				message: 'signin_successful',
 				places_user_attending: places_user_attending

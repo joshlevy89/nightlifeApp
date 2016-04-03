@@ -22,15 +22,13 @@ function add(db, io) {
 			var new_place = 
 			{
 				id: result.id,
-				name: result.name,
-				city: result.city,
+				business: result.business,
 				attending: [user]
 			}
 			places_attending.insert(new_place, function(err,doc) {
 				io.sockets.emit('places_attending_updated',{
 					id: result.id,
-					name: result.name,
-					city: result.city,
+					business: result.business,
 					num_attending: 1
 				})
 			})
@@ -48,9 +46,8 @@ function add(db, io) {
 			}, function(err,doc) {
 				io.sockets.emit('places_attending_updated',{
 					id: result.id,
-					name: result.name,
-					city: result.city,
-					num_attending: attending_update.length
+					business: result.business,
+					attending: attending_update.length
 				})
 			})
 		}

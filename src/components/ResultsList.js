@@ -8,7 +8,7 @@ class ResultsList extends Component {
       <div>
       {/* List of results */}
       {results.map(result=>{
-        return <div key={result.name}><Result {...this.props} result={result}/></div>
+        return <div key={result.business.name}><Result {...this.props} result={result}/></div>
       })}
       </div>
     );

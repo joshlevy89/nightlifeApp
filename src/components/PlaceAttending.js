@@ -5,10 +5,15 @@ class PlaceAttending extends Component {
   	const { place } = this.props
     return (
       <div>
-      {place.name}
+      <a href = {place.business.url} target='_blank'>
+      <button>
+      <img src={place.business.image_url}/>
+      {place.business.name}
       <div>
-      {place.city}
+      {place.business.location.city}
       </div>
+      </button>
+      </a>
       </div>
     );
   }

@@ -35,7 +35,6 @@ export function search_yelp(location) {
 		.then(response => response.json())
       	.then(json => { 
 	      	if (json.message === 'RESULTS_RECEIVED') {
-	      		console.log(json.results)
 	        dispatch(receive_results(json.results))
 	    	}
 	    	else if (json.message === 'NO_RESULTS_RECEIVED') {
@@ -49,8 +48,6 @@ export function search_yelp(location) {
 // ******************************************************
 
 // AND SPLIT THIS INTO ANOTHER FILE *********************
-//increment the attendee count for the event
-// ...and add to the list of places attending (listed as id)
 function add_attendee(index,id,user,result){
 	return {
 		type: 'ADD_ATTENDEE',
@@ -75,7 +72,7 @@ function try_add_attendee(id,user){
 		alert('You are already attending that event')
 	}
 	else {
-	// if not, add attendee on client
+	// if not, add attendee to user's places
 	var result = getState().search_info.results[index]; 
 	dispatch(add_attendee(index,id,user,result))
 	// and also add it on database

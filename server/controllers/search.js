@@ -4,7 +4,7 @@ var request_yelp = require('../yelp_api/request_yelp')
 this.search_yelp = function(req,res) {
 	var params = {
 		location: req.body.location,
-		limit: 1,
+		limit: 10,
 		category_filter: 'bars'
 	}
 	// make call to yelp api
@@ -27,7 +27,10 @@ this.search_yelp = function(req,res) {
 			'id': { $in: businesses_ids }
 		}).toArray(function(err,docs) {
 			// get the ids of the documents
-			var docs_ids = docs.map(doc => { return doc.id })
+			var docs_ids = docs.map(doc => { 
+				return doc.id 
+				}
+			)
 			// go through each business and return a result for it,
 			// using the database documents to get the number attending
 			var results = businesses.map(business => {
@@ -38,9 +41,8 @@ this.search_yelp = function(req,res) {
 					num_attending = docs[docInd].attending.length
 				}
 				return {
-					name: business.name,
 					id: business.id,
-					city: business.location.city,
+					business: business,
 					num_attending: num_attending
 				}
 			})
