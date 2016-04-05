@@ -6,13 +6,13 @@ import ResultsList from '../components/ResultsList'
 import SearchBar from '../components/SearchBar'
 import LocalSearchButton from '../components/LocalSearchButton'
 import { Link } from 'react-router'
-
+require('../styles/index.scss')
 
 class SearchScreen extends Component {
   render() {
   	const { search_yelp, mark_attending, request_status, results, user_name } = this.props
     return (
-      <div>
+      <div className="mainLayout">
       {/* waiting display */}
       <WaitingDisplay {...this.props}/>
       {/* hardcoded Baltimore search */}
@@ -20,7 +20,7 @@ class SearchScreen extends Component {
       {/* search bar for arbitrary search */}
       <SearchBar {...this.props}/>
       <div><Link to='/places_attending'>My places</Link></div>
-      <div><Link to='/signin'>Sign in</Link></div>
+      {user_name===undefined ? <div><Link to='/signin'>Sign in</Link></div>:null}
       {/* results */}
       <ResultsList {...this.props}/>
       </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import TwitterAuthentication from './TwitterAuthentication'
 import { signin } from '../actions'
 import { Link } from 'react-router'
+require('../styles/index.scss')
 
 class LoginScreen extends Component {
 
@@ -17,13 +18,16 @@ class LoginScreen extends Component {
       const { user_name, dispatch } = this.props
       // if twitter authentication changes user name, dispatch signin
       const urlUsername = this.props.params.urlUsername
-      // if the username is different from that in the store, update the username
-      if (urlUsername !== user_name) {
-       dispatch(signin(urlUsername))
-      }
+      // change user_name if the urlUsername is a) not undefined and b) does
+      // not equal the current user_name
+      if (urlUsername !== undefined) {
+        if (urlUsername !== user_name) {
+         dispatch(signin(urlUsername))
+        }
+    }
 
     return (
-      <div>
+      <div className="mainLayout">
       {/* minimalist sign-in 
       user name: <input ref = 'username_input' 
       onKeyUp = {e=>this.handleInputChange(e.keyCode,this.refs.username_input.value)}/>

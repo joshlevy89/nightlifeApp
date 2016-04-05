@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PlaceAttending from '../components/PlaceAttending'
 import { Link } from 'react-router'
-
+require('../styles/index.scss')
 
 class PlacesAttendingScreen extends Component {
   render() {
@@ -19,7 +19,7 @@ class PlacesAttendingScreen extends Component {
         message = "You are not yet attending any places!"
     }
     return (
-      <div>
+      <div className="mainLayout">
       {user_name === undefined ? 
       <div><Link to='/signin'>Sign in</Link></div>:null}
       <div><Link to='/search'>Search for bars</Link></div>
