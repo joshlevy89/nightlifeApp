@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+require('../styles/WaitingDisplay.scss')
+
 
 class WaitingDisplay extends Component {
   render() {
@@ -6,7 +8,7 @@ class WaitingDisplay extends Component {
     return (
       <div>
       {request_status==='REQUESTING_RESULTS' ? 
-      'Waiting...':null
+      <div className="loading"></div>:null
   	  }	
       </div>
     );

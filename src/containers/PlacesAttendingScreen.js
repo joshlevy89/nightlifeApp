@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import PlaceAttending from '../components/PlaceAttending'
-import { Link } from 'react-router'
+import Result from '../components/Result'
+import TwitterAuthentication from './TwitterAuthentication'
+import { Router } from 'react-router'
 require('../styles/index.scss')
+require('../styles/PlacesAttendingScreen.scss')
 
 class PlacesAttendingScreen extends Component {
   render() {
@@ -20,17 +22,17 @@ class PlacesAttendingScreen extends Component {
     }
     return (
       <div className="mainLayout">
-      {user_name === undefined ? 
-      <div><Link to='/signin'>Sign in</Link></div>:null}
-      <div><Link to='/search'>Search for bars</Link></div>
+      <h3 className="title">My Places</h3>
       {places_attending.length !== 0 ?
        places_attending.map(place=>{
         return (
         <div key={place.business.name}>
-        <PlaceAttending {...this.props} place={place}/>
+        <Result {...this.props} result={place} mark_attending="null"/>
         </div>
         )
-      }):<div>{message}</div>}
+      }):<h4 className="message">{message}</h4>}
+      {user_name === undefined ? 
+      <TwitterAuthentication/>:null}
       </div>
     );
   }

@@ -4,6 +4,7 @@ import TwitterAuthentication from './TwitterAuthentication'
 import { signin } from '../actions'
 import { Link } from 'react-router'
 require('../styles/index.scss')
+require('../styles/SigninScreen.scss')
 
 class LoginScreen extends Component {
 
@@ -34,7 +35,7 @@ class LoginScreen extends Component {
       */}
       {/* twitter authentication button */}
       <TwitterAuthentication/>
-      <div><Link to='/search'>Search for bars</Link></div>
+      <div className="barsLink"><Link to='/search'>Find local bars</Link></div>
       </div>
     );
   }

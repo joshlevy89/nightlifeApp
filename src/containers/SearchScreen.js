@@ -15,13 +15,11 @@ class SearchScreen extends Component {
       <div className="mainLayout">
       {/* waiting display */}
       <WaitingDisplay {...this.props}/>
-      {/* hardcoded Baltimore search */}
+      {/* hardcoded Baltimore search 
       <LocalSearchButton {...this.props}/>
+      */}
       {/* search bar for arbitrary search */}
       <SearchBar {...this.props}/>
-      <div><Link to='/places_attending'>My places</Link></div>
-      {user_name===undefined ? <div><Link to='/signin'>Sign in</Link></div>:null}
-      {/* results */}
       <ResultsList {...this.props}/>
       </div>
     );

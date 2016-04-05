@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+require('../styles/SearchBar.scss')
 
 class SearchBar extends Component {
   
@@ -11,8 +12,11 @@ class SearchBar extends Component {
 
   render() {
     return (
-     <input ref="searchBar" 
+     <div>
+     <h3 className="title">Find local bars</h3>
+     <input className = "searchBar" ref="searchBar" 
      onKeyPress={e=>this.handleKeyPress(this.refs.searchBar.value,e.key)}/>
+     </div>
     );
   }
 }
