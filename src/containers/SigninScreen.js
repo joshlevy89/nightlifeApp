@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import TwitterAuthentication from './TwitterAuthentication'
-import { signin } from '../actions'
+import { signin, receive_results } from '../actions'
 import { Link } from 'react-router'
 require('../styles/index.scss')
 require('../styles/SigninScreen.scss')
@@ -24,6 +24,11 @@ class LoginScreen extends Component {
       if (urlUsername !== undefined) {
         if (urlUsername !== user_name) {
          dispatch(signin(urlUsername))
+         // get the last search from local storage
+         var results = JSON.parse(sessionStorage.getItem("results"));
+         if (results !== null) { // as in no search has yet been executed
+         dispatch(receive_results(results))
+         }
         }
     }
 

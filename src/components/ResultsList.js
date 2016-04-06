@@ -4,6 +4,7 @@ import Result from './Result'
 class ResultsList extends Component {
   render() {
   	const { results } = this.props
+    sessionStorage.setItem("results", JSON.stringify(results));
     return (
       <div>
       {/* List of results */}

@@ -34,15 +34,6 @@ export function search_info(state=initial_state,action) {
 			return Object.assign({},state,{
 				results: results_copy
 			})
-		// case 'ADD_ATTENDEE':
-		// 	var results_copy = state.results.slice(0,state.results.length);
-		// 	var result = results_copy[action.index]
-		// 	results_copy[action.index] = Object.assign({},result,{
-		// 		num_attending: result.num_attending + 1
-		// 	})
-		// 	return Object.assign({},state,{
-		// 		results: results_copy
-		// 	})
 		default:
 			return state
 	}
