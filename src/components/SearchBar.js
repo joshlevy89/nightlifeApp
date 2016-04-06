@@ -16,6 +16,10 @@ class SearchBar extends Component {
      <h3 className="title">Find local bars</h3>
      <input className = "searchBar" ref="searchBar" 
      onKeyPress={e=>this.handleKeyPress(this.refs.searchBar.value,e.key)}/>
+     <div className = "YelpDiv">
+     Powered by Yelp
+     <i className="fa fa-yelp YelpLogo"></i>
+     </div>
      </div>
     );
   }

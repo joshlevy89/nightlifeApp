@@ -10,6 +10,7 @@ class TwitterAuthentication extends Component {
     		<a href = 'http://127.0.0.1:2999/auth/twitter/'>
 	    		<Button bsStyle="primary" bsSize="lg">
 	    		Sign in with Twitter
+          <i className="fa fa-twitter TwitterLogo"></i>
 	    		</Button>
 	    	</a>
     	</div>
