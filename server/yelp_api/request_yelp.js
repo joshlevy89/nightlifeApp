@@ -5,7 +5,14 @@ var request = require('request');
 var qs = require('querystring');  
 var _ = require('lodash');
 // NOT SURE WHY I NEED TO GO BACK 3 FOLDERS TO GET API CREDENTIALS
-var credentials = require("json!../../yelp_api_credentials.json");
+//var credentials = require("json!../../yelp_api_credentials.json");
+var credentials = {
+"consumerKey": "kYMWJF2dWTRz7RIZr8EaSw",
+"consumerSecret": "1c69bmnZbUp2_rqcIIh523noG6U",
+"token": "hxX12uYjf03q_rbyBNsk24pAvu1TGC-H",
+"tokenSecret":  "--nGNu2Sgg2UYJKBh0nT0JDofHU"
+}
+
 
 /* Function for yelp call
  * ------------------------
