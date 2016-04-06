@@ -29,7 +29,7 @@ function add(db, io) {
 				io.sockets.emit('places_attending_updated',{
 					id: result.id,
 					business: result.business,
-					num_attending: 1
+					attending: 1
 				})
 			})
 		}

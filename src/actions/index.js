@@ -3,6 +3,7 @@ require('es6-promise').polyfill();
 import { browserHistory } from 'react-router'
 import { postApi, getApi } from '../api-methods'
 import { getIdIndex } from '../reducers/search_info'
+import { getIdIndexUser } from '../reducers/user_info'
 import { isUserGoing } from '../reducers/user_info'
 
 // SPLIT THIS INTO ONE FILE ******************
@@ -91,6 +92,36 @@ export function mark_attending(id,user) {
 	}
 }
 
+// ANOTHER SPLIT ****************************************
+function remove_attendee(index){
+	return {
+		type: 'REMOVE_ATTENDEE',
+		index: index
+	}
+}
+
+export function try_remove_attendee(id,user){
+	return (dispatch, getState) => {
+	// find index of id 
+	const index = getIdIndexUser(getState().user_info, id)
+	dispatch(remove_attendee(index))
+	// and also add it on database
+	const body = {
+		id: id,
+		user: user
+	}
+	postApi('api/remove',body)
+	}
+}
+
+export function mark_remove(id,user) {
+	return (dispatch, getState) => {
+		dispatch(try_remove_attendee(id,user))
+	}
+}
+
+
+// ANOTHER SPLIT ****************************************
 // this is triggered when socket io notices that someone
 // has indicated he/she is going to something. when this happens,
 // need to update only the places the user is currently viewing.

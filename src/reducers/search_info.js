@@ -21,6 +21,7 @@ export function search_info(state=initial_state,action) {
 		// loop through all the places user is viewing, and if id matches the 
 		// update place, update its value
 		case 'UPDATE_PLACES':
+		console.log(action.updated_place)
 		 	var ind = state.results.map(result=>{
 		 				return result.id
 		 		}).indexOf(action.updated_place.id)
@@ -28,7 +29,7 @@ export function search_info(state=initial_state,action) {
 		 	var results_copy = state.results.slice(0)
 		 	var result = results_copy[ind]
 		 	results_copy[ind] = Object.assign({},result,{
-		 		num_attending: result.num_attending + 1
+		 		num_attending: action.updated_place.attending
 		 	})
 			return Object.assign({},state,{
 				results: results_copy

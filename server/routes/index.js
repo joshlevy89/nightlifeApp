@@ -1,5 +1,6 @@
 var Search = require('../controllers/search.js')
 var Add = require('../controllers/add.js')
+var Remove = require('../controllers/remove.js')
 var Signin = require('../controllers/signin.js')
 var Authenticate = require('../controllers/authenticate.js')
 
@@ -7,6 +8,7 @@ var Authenticate = require('../controllers/authenticate.js')
 module.exports = function(app, db, io) {
 	var search = new Search(db, io)
 	var add = new Add(db, io)
+	var remove = new Remove(db,io)
 	var signin = new Signin(db,io)
 	var authenticate = new Authenticate(app)
 
@@ -15,6 +17,9 @@ module.exports = function(app, db, io) {
 
 	app.route('/api/add')
 		.post(add.add_attendee)
+
+	app.route('/api/remove')
+		.post(remove.remove_attendee)
 
 	app.route('/api/signin')
 		.post(signin.attempt_signin)

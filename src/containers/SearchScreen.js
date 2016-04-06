@@ -10,7 +10,6 @@ require('../styles/index.scss')
 
 class SearchScreen extends Component {
   render() {
-  	const { search_yelp, mark_attending, request_status, results, user_name } = this.props
     return (
       <div className="mainLayout">
       {/* waiting display */}

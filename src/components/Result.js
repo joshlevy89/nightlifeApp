@@ -3,7 +3,7 @@ require('../styles/Result.scss')
 
 class Result extends Component {
   render() {
-  	const { result, mark_attending, user_name } = this.props
+  	const { result, mark_attending, mark_remove, user_name } = this.props
     var path = window.location.pathname 
     return (
       <div className = "result">
@@ -17,7 +17,7 @@ class Result extends Component {
       <div>Attendees: {result.num_attending}</div>
       </div>
       :
-      <a href="#">Remove</a>
+      <a href="#" onClick = {()=>mark_remove(result.business.id,user_name)}>Remove</a>
       }
       </div>
     );

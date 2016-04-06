@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Result from '../components/Result'
 import TwitterAuthentication from './TwitterAuthentication'
+import { mark_remove } from '../actions'
 import { Router } from 'react-router'
 require('../styles/index.scss')
 require('../styles/PlacesAttendingScreen.scss')
@@ -27,7 +28,7 @@ class PlacesAttendingScreen extends Component {
        places_attending.map(place=>{
         return (
         <div key={place.business.name}>
-        <Result {...this.props} result={place} mark_attending="null"/>
+        <Result {...this.props} result={place}/>
         </div>
         )
       }):<h4 className="message">{message}</h4>}
@@ -46,7 +47,8 @@ function mapStateToProps(state) {
 }
 
 PlacesAttendingScreen = connect(
-mapStateToProps
+mapStateToProps,
+{ mark_remove }
 )(PlacesAttendingScreen)
 
 export default PlacesAttendingScreen

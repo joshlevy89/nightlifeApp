@@ -14,6 +14,12 @@ export function user_info(state=initial_state,action) {
 			return Object.assign({},state,{
 				places_attending: places_attending_copy
 			})
+		case 'REMOVE_ATTENDEE':
+			var places_attending_copy = state.places_attending.slice(0)
+			places_attending_copy.splice(action.index, 1);
+			return Object.assign({},state,{
+				places_attending: places_attending_copy
+			})
 		case 'RECEIVE_USER_PLACES':
 			return Object.assign({},state,{
 				places_attending: action.places
@@ -34,6 +40,19 @@ export function isUserGoing(state,id) {
 		}
 	})
 	return matches.length > 0
+}
+
+export function getIdIndexUser(state,id) {
+	var places = state.places_attending
+	var index = places.findIndex(place=>{
+		if (place.id === id) {
+			return true
+		}
+		else {
+			return false
+		}
+	})
+	return index
 }
 
 	
