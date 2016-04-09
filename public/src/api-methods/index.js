@@ -1,5 +1,5 @@
-var port = require("../../port_config.json").server_port;
-var base_url = 'http://localhost:' + port + '/'
+var PORT = Number(process.env.PORT || 3000);
+var base_url = 'http://localhost:' + PORT + '/'
 
 export function postApi(action,body) {
 		var url = base_url + action
