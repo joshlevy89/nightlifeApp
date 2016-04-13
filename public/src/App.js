@@ -22,6 +22,7 @@ if (PORT === 3000) {
 const socket = io('http://localhost:' + PORT + '/');
 }
 else {
+console.log('A WHOLE OTHER PORT IS HIT AND IT IS: ' + PORT)
 const socket = io('https://joshlevy89-nightlife-app.herokuapp.com/' + PORT + '/');	
 }
 
