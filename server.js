@@ -2,8 +2,8 @@ var cors = require('cors')
 var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
-var http = require('http').Server(app)
-var io = require('socket.io')(http)
+var https = require('https').Server(app)
+var io = require('socket.io')(https)
 var routes = require('./app/routes/index.js')
 var database = require('./app/database/db.js')
 var db = new database()
@@ -67,9 +67,9 @@ app.get('/signin*',function(req,res){
 })
 
 
-http.listen(PORT, function () {
-	console.log('Backend server listening at http://localhost:' + PORT);
+https.listen(PORT, function () {
+	console.log('Backend server listening at https://localhost:' + PORT);
 })
 
-module.exports = http
+module.exports = https
 
