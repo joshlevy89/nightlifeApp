@@ -18,6 +18,7 @@ let store = createStore(
 	applyMiddleware(...middleware)
 );
 if (PORT === 3000) {
+	console.log('the port is equal to ' + PORT)
 const socket = io('http://localhost:' + PORT + '/');
 }
 else {
