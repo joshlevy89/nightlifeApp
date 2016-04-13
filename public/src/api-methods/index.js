@@ -1,5 +1,8 @@
-var PORT = Number(process.env.PORT || 3000);
-var base_url = 'http://localhost:' + PORT + '/'
+//var PORT = Number(process.env.PORT || 3000);
+//var base_url = 'https://localhost:' + PORT + '/'
+//var base_url = 'https://localhost:' + PORT + '/'
+var base_url = '/';
+
 
 export function postApi(action,body) {
 		var url = base_url + action

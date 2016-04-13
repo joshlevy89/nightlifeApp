@@ -9,7 +9,7 @@ app.use(passport.session());
 passport.use(new Strategy({
     consumerKey: "CW6VEnw5s1HArmtlvyyncSgjW",
     consumerSecret: "wiE6v7BfxCBB0IoiIw6rg2Qo5nbHG2L7O3hYyemq7NyicsIOAp",
-    callbackURL: 'http://127.0.0.1:3000/auth/twitter/return'
+    callbackURL: '/auth/twitter/return'
   },
   function(token, tokenSecret, profile, cb) {
     return cb(null, profile);
@@ -32,7 +32,7 @@ this.twitter_callback = app.get('/auth/twitter/return',
     passport.authenticate('twitter', { failureRedirect: '/' }),
     function(req, res) {
        var username = encodeURIComponent(req.user.username);
-       res.redirect('http://127.0.0.1:3000/signin/'+username);
+       res.redirect('/signin/'+username);
 })
 }
 
