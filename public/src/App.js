@@ -19,7 +19,7 @@ let store = createStore(
 );
 if (PORT === 3000) {
 	console.log('the port is equal to ' + PORT)
-const socket = io('http://localhost:' + PORT + '/');
+const socket = io('https://localhost:' + PORT + '/');
 }
 else {
 console.log('A WHOLE OTHER PORT IS HIT AND IT IS: ' + PORT)
