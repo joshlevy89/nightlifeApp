@@ -17,8 +17,12 @@ let store = createStore(
 	reducers,
 	applyMiddleware(...middleware)
 );
-
+if (PORT === 3000) {
 const socket = io('http://localhost:' + PORT + '/');
+}
+else {
+const socket = io('https://joshlevy89-nightlife-app.herokuapp.com/' + PORT + '/');	
+}
 
 socket.on('places_attending_updated', function(updated_place) {
     store.dispatch(update_places(updated_place))
