@@ -6,7 +6,7 @@ import ResultsList from '../components/ResultsList'
 import SearchBar from '../components/SearchBar'
 import LocalSearchButton from '../components/LocalSearchButton'
 import { Link } from 'react-router'
-require('../styles/index.scss')
+require('../../styles/index.scss')
 
 class SearchScreen extends Component {
   render() {

@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
   entry: [
@@ -17,14 +19,12 @@ module.exports = {
       exclude: /node_modules/,
       loader: "babel-loader",
       query: {
-        presets: ["es2015", "react", "stage-1"]
+        presets: ["es2015", "react", "stage-0"]
       }
     },
-    {
-        test: /\.scss$/,
-        exclude: ['node_modules', 'app'],
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
-      },
+    { test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
+    },
       {
         test   :  /\.json$/,
         loader : 'json'
@@ -35,6 +35,23 @@ module.exports = {
       }
   ]
 },
+ plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new ExtractTextPlugin("./styles/main.css"),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false
+      }
+    })
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.json', '.scss']
   }

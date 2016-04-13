@@ -5,10 +5,11 @@ import thunk from 'redux-thunk';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux';
 import io from 'socket.io-client';
-var PORT = require("../port_config.json").server_port;
 import routes from './routes/index'
 import reducers from './reducers';
 import { update_places } from './actions'
+var PORT = Number(process.env.PORT || 3000);
+
 
 const middleware = [ thunk, logger() ];
 

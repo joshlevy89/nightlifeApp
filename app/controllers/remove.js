@@ -7,8 +7,6 @@ function remove(db, io) {
 		// get the bars people are attending
 		places_attending.find({}).toArray(function(err,docs) {
 
-		console.log('HELLLASKDJL')
-
 		// find the result in list
 		matches = docs.filter(doc => {
 			if (doc.id === id) {

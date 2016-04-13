@@ -38,4 +38,14 @@ export function signin(user_name) {
 	}
 }
 
+// export function check_login_status() {
+// 	console.log('HIT ACTION')
+// 	getApi('auth/twitter/userinfo')
+// 	// .then(function(response){
+// 	// 	return response.json()
+// 	// })
+// 	// .then(function(data){
+// 	// 	console.log('data ' + data)
+// 	// })
+// }
 

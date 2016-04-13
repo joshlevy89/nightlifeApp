@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-require('../styles/WaitingDisplay.scss')
+require('../../styles/WaitingDisplay.scss')
 
 
 class WaitingDisplay extends Component {

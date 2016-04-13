@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-require('../styles/Result.scss')
+require('../../styles/Result.scss')
 
 class Result extends Component {
   render() {

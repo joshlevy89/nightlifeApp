@@ -29,4 +29,5 @@ module.exports = function(app, db, io) {
 
 	app.route('/auth/twitter/return')
 		.get(authenticate.twitter_callback)
+
 }

@@ -1,6 +1,7 @@
 var webpack = require('webpack');
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
   devtool: 'eval',
@@ -25,11 +26,8 @@ module.exports = {
         loader: "babel-loader",
         cacheDirectory: true
       },
-      {
-        test: /\.scss$/,
-        include: path.join(__dirname, 'public', 'styles'),
-        exclude: ['node_modules', 'app'],
-        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+      { test: /\.scss$/,
+        loaders: ["style", "css", "sass"]
       },
       {
         test   :  /\.json$/,
@@ -41,6 +39,16 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin("./styles/main.css"),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    })
+  ],
   resolve: {
     extensions: ['', '.js', '.jsx', '.json', '.scss']
   }

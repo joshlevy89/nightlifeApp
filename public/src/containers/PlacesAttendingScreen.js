@@ -4,8 +4,8 @@ import Result from '../components/Result'
 import TwitterAuthentication from './TwitterAuthentication'
 import { mark_remove } from '../actions'
 import { Router } from 'react-router'
-require('../styles/index.scss')
-require('../styles/PlacesAttendingScreen.scss')
+require('../../styles/index.scss')
+require('../../styles/PlacesAttendingScreen.scss')
 
 class PlacesAttendingScreen extends Component {
   render() {

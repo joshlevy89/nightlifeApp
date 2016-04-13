@@ -14,6 +14,8 @@ export function postApi(action,body) {
 }
 
 export function getApi(action) {
+		console.log('About to fetch')
 		var url = base_url + action
+		console.log(url)
 		return fetch(url)
 }
