@@ -31,17 +31,17 @@
   },
   "homepage": "NA",
   "devDependencies": {
+    "react-hot-loader": "^1.3.0",
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
     "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
     "babel-loader": "^6.0.1",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
-    "react-hot-loader": "^1.3.0",
-    "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "dependencies": {
     "body-parser": "^1.15.0",
     "connect-ensure-login": "^0.1.1",
     "cookie-parser": "^1.4.1",
