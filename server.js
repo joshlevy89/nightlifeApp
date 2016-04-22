@@ -1,75 +1,58 @@
-var cors = require('cors')
-var bodyParser = require('body-parser')
 var express = require('express');
 var app = express();
-var https = require('https').Server(app)
-var io = require('socket.io')(https)
-var routes = require('./app/routes/index.js')
-var database = require('./app/database/db.js')
+var http = require('http').Server(app)
+var io = require('socket.io')(http)
+var routes = require('./server/routes/index.js')
+var database = require('./server/database/db.js')
 var db = new database()
-const webpack = require('webpack');
-
 var passport = require('passport');
 
+var cors = require('cors')
+var bodyParser = require('body-parser')
+var path = require('path');
+var httpProxy = require('http-proxy');
+var proxy = httpProxy.createProxyServer();
+var isProduction = process.env.NODE_ENV === 'production';
+var port = isProduction ? process.env.PORT : 3000;
+var publicPath = path.resolve(__dirname, 'public');
 
-var PORT = Number(process.env.PORT || 3000);
+
+var port = Number(process.env.PORT || 3000);
 
 const isDevMode = (process.env.NODE_ENV !== 'production');
 
-app.use(express.static('public'));
-app.use(cors()); // middleware that allows cross-platform requests
+app.use(express.static(publicPath));
 app.use(bodyParser.json());
-// Use application-level middleware for common functionality, including
-// logging, parsing, and session handling.
+app.use(cors());
 app.use(require('morgan')('combined'));
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 
-
-if (isDevMode) {
-  // Use Webpack Hot middleware in development
-  (function () {
-    console.log('development mode')
-    // Create & configure a webpack compiler
-    const webpack = require('webpack');
-    const webpackConfig = require(process.cwd() + '/webpack-dev.config.js');
-    const compiler = webpack(webpackConfig);
-
-    // Attach the dev middleware to the compiler & the server
-    app.use(require("webpack-dev-middleware")(compiler, {
-      noInfo: true,
-      headers: { "Access-Control-Allow-Origin":
-        "http://localhost:3000",
-        "Access-Control-Allow-Credentials": "true"
-      },
-      publicPath: webpackConfig.output.publicPath
-    }));
-
-    app.use(require("webpack-hot-middleware")(compiler, {
-      log: console.log,
-      path: '/__webpack_hmr',
-      heartbeat: 10 * 1000
-    }));
-  })();
+// We only want to run the workflow when not in production
+if (!isProduction) {
+  // Any requests to localhost:3000/build is proxied
+  // to webpack-server
+  app.all('/build/*', function (req, res) {
+    proxy.web(req, res, {
+        target: 'http://localhost:8080'
+    });
+  });
 }
 
 db.dbConnect(function(err,db_instance){
 	routes(app, db_instance, io)
 })
 
-app.get('/signin*',function(req,res){
-  var path = require('path');
+// It is important to catch any errors from the proxy or the
+// server will crash. An example of this is connecting to the
+// server when webpack is bundling
+proxy.on('error', function(e) {
+  console.log('Could not connect to proxy, please try again...');
+});
 
-  console.log('sign in hit');
-	res.sendFile(path.join(__dirname, '/public/index.html'))
+http.listen(port, function () {
+	console.log('Backend server listening at http://localhost:' + port);
 })
-
-
-https.listen(PORT, function () {
-	console.log('Backend server listening at https://localhost:' + PORT);
-})
-
-module.exports = https
 

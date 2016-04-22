@@ -4,7 +4,6 @@ import { search_yelp, mark_attending } from '../actions'
 import WaitingDisplay from '../components/WaitingDisplay'
 import ResultsList from '../components/ResultsList'
 import SearchBar from '../components/SearchBar'
-import LocalSearchButton from '../components/LocalSearchButton'
 import { Link } from 'react-router'
 require('../../styles/index.scss')
 

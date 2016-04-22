@@ -7,7 +7,7 @@ class TwitterAuthentication extends Component {
   render() {
     return (
     	<div className="TwitterLoginButtonDiv">
-    		<a href = 'https://127.0.0.1:3000/auth/twitter/'>
+    		<a href = 'http://127.0.0.1:3000/auth/twitter/'>
 	    		<Button bsStyle="primary" bsSize="lg">
 	    		Sign in with Twitter
           <i className="fa fa-twitter TwitterLogo"></i>
