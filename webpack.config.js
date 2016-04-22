@@ -32,28 +32,18 @@ var config = {
     // Everything related to Webpack should go through a build path,
     // localhost:3000/build. That makes proxying easier to handle
     publicPath: '/build/'
-  },
+  },  
   module: {
-
-    loaders: [
-
-    // I highly recommend using the babel-loader as it gives you
-    // ES6/7 syntax and JSX transpiling out of the box
-    {
+    loaders: [{
       test: /\.js$/,
       loader: 'babel',
       exclude: [nodeModulesPath]
     },
-
-    // Let us also add the style-loader and css-loader, which you can
-    // expand with less-loader etc.
     { test: /\.scss$/,
       loaders: ["style", "css", "sass"]
     },
     { test: /\.json$/, loader: 'json' }
-    ]
-  },
-
+  ]},
   // We have to manually add the Hot Replacement plugin when running
   // from Node
   plugins: [new Webpack.HotModuleReplacementPlugin()]
