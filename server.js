@@ -21,7 +21,8 @@ var port = Number(process.env.PORT || 3000);
 
 const isDevMode = (process.env.NODE_ENV !== 'production');
 
-app.use(express.static(publicPath));
+app.use('/',express.static(publicPath));
+app.use('/signin/*',express.static(publicPath));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(require('morgan')('combined'));

@@ -9,7 +9,8 @@ import routes from './src/routes/index'
 import reducers from './src/reducers';
 import { update_places } from './src/actions';
 
-const middleware = [ thunk, logger() ];
+var isProduction = process.env.NODE_ENV === 'production';
+const middleware = isProduction ? [ thunk ]:[thunk, logger()];
 
 let store = createStore(
 	reducers,

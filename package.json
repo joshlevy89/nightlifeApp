@@ -4,9 +4,10 @@
   "description": "Boilerplate for ReactJS project with hot code reloading",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js --watch server.js & node ./webpack-server/bundle.js",
+    "dev": "nodemon --watch server.js --watch ./server server.js & node ./webpack-server/bundle.js",
     "start": "node server.js",
     "postinstall": "node deploy",
+    "prod-test": "NODE_ENV=production PORT=3000 node deploy.js && NODE_ENV=production PORT=3000 node server.js",
     "lint": "eslint src"
   },
   "repository": {
