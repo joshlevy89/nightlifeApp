@@ -1,6 +1,3 @@
-//var PORT = Number(process.env.PORT || 3000);
-//var base_url = 'https://localhost:' + PORT + '/'
-//var base_url = 'https://localhost:' + PORT + '/'
 var base_url = '/';
 
 

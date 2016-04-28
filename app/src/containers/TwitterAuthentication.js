@@ -7,7 +7,7 @@ class TwitterAuthentication extends Component {
   render() {
     var isProduction = process.env.NODE_ENV === 'production';
     if (isProduction) {
-      var url = 'https://joshlevy89-nightlife-app.herokuapp.com/auth/twitter/'
+      var url = 'https://my-nightlife-coordinator.herokuapp.com/auth/twitter/'
     }
     else {
       var url = 'http://127.0.0.1:3000/auth/twitter/'
