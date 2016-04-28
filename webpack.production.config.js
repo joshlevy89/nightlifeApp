@@ -18,11 +18,10 @@ var config = {
       test: /\.js$/,
       loader: 'babel',
       exclude: [nodeModulesPath]
-    },
+    },   
     { test: /\.scss$/,
       loaders: ["style", "css", "sass"]
-    },
-    { test: /\.json$/, loader: 'json' }]
+    }]
   },
   plugins: [
     new webpack.DefinePlugin({

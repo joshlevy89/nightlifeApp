@@ -16,15 +16,7 @@ let store = createStore(
 	applyMiddleware(...middleware)
 );
 
-var isProduction = process.env.NODE_ENV === 'production';
-if (isProduction) {
-	var socket = io('http://my-stock-watcher.herokuapp.com/' + process.env.PORT + '/');
-	//var socket = io('http://localhost:' + 3000 + '/')
-}
-else {
- 	var socket = io('http://localhost:' + 3000 + '/')
-}	   
-
+var socket = io.connect('/');
 socket.on('places_attending_updated', function(updated_place) {
     store.dispatch(update_places(updated_place))
 });

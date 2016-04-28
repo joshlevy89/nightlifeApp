@@ -4,7 +4,7 @@ var http = require('http').Server(app)
 var io = require('socket.io')(http)
 var routes = require('./server/routes/index.js')
 var database = require('./server/database/db.js')
-var db = new database()
+var db = new database();
 var passport = require('passport');
 
 var cors = require('cors')
